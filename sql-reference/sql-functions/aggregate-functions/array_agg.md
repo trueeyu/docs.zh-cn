@@ -21,7 +21,7 @@
 
 ## Example
 
-下面的示例使用如下数据表进行介绍
+下面的示例使用如下数据表进行介绍。
 
 ```Plain Text
 mysql> select * from test;
@@ -37,7 +37,7 @@ mysql> select * from test;
 ```
 
 ```Plain Text
--- 根据 c1 列分组，对 c2 执行列转行
+-- 根据 c1 列分组，对 c2 执行列转行。
 mysql> select c1, array_agg(c2) from test group by c1;
 +------+-----------------+
 | c1   | array_agg(`c2`) |
@@ -49,7 +49,7 @@ mysql> select c1, array_agg(c2) from test group by c1;
 ```
 
 ```Plain Text
--- 对全表执行列转行，但是没有符合过滤条件的数据
+-- 对整列执行列转行，但是没有满足条件的数据，聚合结果为 NULL。
 mysql> select array_agg(c2) from test where c1>4;
 +-----------------+
 | array_agg(`c2`) |
