@@ -10,16 +10,16 @@
 
 ## 参数说明
 
-`col`: 需要转换的列。支持的数据类型为 BOOLEAN、TINYINT、SMALLINT、INT、BIGINT、LARGEINT、FLOAT、DOUBLE、VARCHAR、CHAR、DATETIME、DATE。
+`col`：需要转换的列。支持的数据类型为 BOOLEAN、TINYINT、SMALLINT、INT、BIGINT、LARGEINT、FLOAT、DOUBLE、VARCHAR、CHAR、DATETIME、DATE。
 
 ## 返回值说明
 
-返回的数据类型为 ARRAY
+返回的数据类型为 ARRAY。
 
 ## 注意事项
 
 * 数组中元素不保证顺序。
-* 返回转换生成的数组, 数组中的元素类型与 col 类型一致。
+* 返回转换生成的数组。数组中的元素类型与 `col` 类型一致。
 
 ## 示例
 
@@ -38,7 +38,7 @@ mysql> select * from test;
 +------+------+
 ```
 
-根据 c1 列分组，对 c2 执行列转行。
+根据 `c1` 列分组，对 `c2` 执行列转行。
 
 ```Plain Text
 mysql> select c1, array_agg(c2) from test group by c1;
@@ -51,7 +51,7 @@ mysql> select c1, array_agg(c2) from test group by c1;
 +------+-----------------+
 ```
 
-对整列执行列转行，如果没有满足条件的数据，聚合结果为 NULL。
+对整列执行列转行，如果没有满足条件的数据，聚合结果为 `NULL`。
 
 ```Plain Text
 mysql> select array_agg(c2) from test where c1>4;
