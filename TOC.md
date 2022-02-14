@@ -255,6 +255,7 @@
       + [strleft](/sql-reference/sql-functions/string-functions/strleft.md)
       + [strright](/sql-reference/sql-functions/string-functions/strright.md)
     + 聚合函数
+      + [array_agg](/sql-reference/sql-functions/aggregate-functions/array_agg.md)
       + [approx_count_distinct](/sql-reference/sql-functions/aggregate-functions/approx_count_distinct.md)
       + [avg](/sql-reference/sql-functions/aggregate-functions/avg.md)
       + [bitmap](/sql-reference/sql-functions/aggregate-functions/bitmap.md)
@@ -284,6 +285,7 @@
       + [bitmap_xor](/sql-reference/sql-functions/bitmap-functions/bitmap_xor.md)
       + [to_bitmap](/sql-reference/sql-functions/bitmap-functions/to_bitmap.md)
     + 数组函数
+      + [array_agg](/sql-reference/sql-functions/array-functions/array_agg.md)
       + [array_append](/sql-reference/sql-functions/array-functions/array_append.md)
       + [array_avg](/sql-reference/sql-functions/array-functions/array_avg.md)
       + [array_contains](/sql-reference/sql-functions/array-functions/array_contains.md)
