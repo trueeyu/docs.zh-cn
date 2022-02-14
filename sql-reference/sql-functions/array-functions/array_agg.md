@@ -12,8 +12,6 @@
 
 `col`: 需要转换的列。支持的数据类型为 BOOLEAN、TINYINT、SMALLINT、INT、BIGINT、LARGEINT、FLOAT、DOUBLE、VARCHAR、CHAR、DATETIME、DATE。
 
-需要转换的列。
-
 ## 返回值说明 (Return value)
 
 返回的数据类型为 ARRAY
@@ -53,7 +51,7 @@ mysql> select c1, array_agg(c2) from test group by c1;
 +------+-----------------+
 ```
 
-对整列执行列转行，但是没有满足条件的数据，聚合结果为 NULL。
+对整列执行列转行，如果没有满足条件的数据，聚合结果为 NULL。
 
 ```Plain Text
 mysql> select array_agg(c2) from test where c1>4;
