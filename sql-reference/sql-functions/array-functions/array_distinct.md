@@ -35,7 +35,6 @@ mysql> select * from test;
 |    3 | NULL          |
 |    4 | [null]        |
 +------+---------------+
-
 ```
 
 对 `c2` 列数组中的元素进行去重。
@@ -50,7 +49,6 @@ mysql> select c1, array_distinct(c2) from test;
 |    3 | NULL                 |
 |    4 | [null]               |
 +------+----------------------+
-4 rows in set (0.01 sec)
 ```
 
 ## 关键词
