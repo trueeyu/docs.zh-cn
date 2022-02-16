@@ -6,7 +6,7 @@
 
 ## 语法
 
-`ARRAY_AGG(array)`
+`ARRAY_DISTINCT(array)`
 
 ## 参数说明
 
