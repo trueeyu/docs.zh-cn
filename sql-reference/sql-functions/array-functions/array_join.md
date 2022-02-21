@@ -14,7 +14,7 @@
 * `sep`：分隔符。支持的数据类型为 VARCHAR。
 * `null_replace_str`：替换 NULL 的字符串。支持的数据类型为 VARCHAR。
 * 只支持一维数组。
-* 不支持 Decimal 类型
+* 不支持 Decimal 类型。
 
 ## 返回值说明
 
