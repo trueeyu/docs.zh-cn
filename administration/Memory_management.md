@@ -6,12 +6,12 @@
 
 | 标识 | Metric 名称 | 名称 | 说明 |
 | --- | --- | --- | --- |
-| process | starrocks_be_process_mem_bytes |  BE 进程内存   | BE 当前实际使用的内存，不包含预留的空闲内存，默认上限为机器内存的 80% |
+| process | starrocks_be_process_mem_bytes | BE 进程内存 | BE 当前实际使用的内存，不包含预留的空闲内存，默认软限为机器内存的 80%，转为硬限为机器内存的 90%|
 | query_pool | starrocks_be_column_pool_mem_bytes | BE 查询层使用总内存  | 默认为 process 内存的 90%，不支持修改 |
 | load | starrocks_be_load_mem_bytes | 导入使用的总内存 | 默认为 process 内存的 30%，超过限制会强制执行刷 MemTable 和反压逻辑 |
 | table_meta | starrocks_be_tablet_meta_mem_bytes | 元数据总内存 | 内存大小没有限制 |
 | compaction | starrocks_be_compaction_mem_bytes | 版本合并总内存 | 用于数据导入完成后的 Compaction，默认上限是 process 内存上限 |
-| column_pool | starrocks_be_column_pool_mem_bytes | Column pool内存池 | 用于加速存储层数据读取的 Column Cache，默认上限是 process 内存上限 |
+| column_pool | starrocks_be_column_pool_mem_bytes | column pool 内存池 | 用于加速存储层数据读取的 Column Cache，默认上限是 process 内存上限 |
 | page_cache | starrocks_be_storage_page_cache_mem_bytes | BE 存储层 page 缓存 | 默认关闭，在内存充裕并且有大量数据扫描的场景可以考虑打开，可以加速查询性能 |
 | chunk_allocator | starrocks_be_chunk_allocator_mem_bytes | CPU per core 缓存 | 用于加速小块内存申请的 Cache，默认上限是 2G, 可以加速查询性能 |
 | consistency | starrocks_be_consistency_mem_bytes | 定期一致性校验使用总内存 | 定期对 Tablet 涉及的数据计算 Checksum 使用的内存 |
