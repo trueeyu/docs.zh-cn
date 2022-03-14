@@ -5,7 +5,7 @@
 ## 内存分类
 
 | 标识 | Metric 名称 | 说明 | BE 相关配置 |
-| --- | --- | --- |
+| --- | --- | --- | --- |
 | process | starrocks_be_process_mem_bytes | BE 进程实际使用的内存（不包含预留的空闲内存）| mem_limit |
 | query_pool | starrocks_be_column_pool_mem_bytes | BE 查询层使用总内存 | |
 | load | starrocks_be_load_mem_bytes | 导入使用的总内存 | load_process_max_memory_limit_bytes, load_process_max_memory_limit_percent |
