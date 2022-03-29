@@ -83,7 +83,8 @@ http://be_ip:8040/mem_tracker
 通过浏览器或是 curl 访问。
 
 ```bash
-http://be_ip:be_web_port/memz
+# BE webserver_port 默认是 8040
+http://be_ip:8040/memz
 ```
 
 ```plain text
