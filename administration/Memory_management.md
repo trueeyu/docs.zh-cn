@@ -60,7 +60,7 @@ curl -XGET -s http://BE_IP:8040/metrics | grep "^starrocks_be_.*_mem_bytes\|^sta
 
 对应指标的含义参考章节: 内存分类。
 
-* **通过 mem\_tracker 接口分析 BE 内存使用**
+* **通过 mem_tracker 接口分析 BE 内存使用**
 
 通过浏览器或是 curl 访问。
 
