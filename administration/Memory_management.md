@@ -58,7 +58,7 @@ Metrics 统计每 10 秒更新一次。
 curl -XGET -s http://BE_IP:8040/metrics | grep "^starrocks_be_.*_mem_bytes\|^starrocks_be_tcmalloc_bytes_in_use" 
 ```
 
-对应指标的含义参考章节: 内存分类。
+对应指标的含义参考章节: [内存分类](#内存分类)。
 
 * **通过 mem_tracker 接口分析 BE 内存使用**
 
@@ -69,10 +69,10 @@ curl -XGET -s http://BE_IP:8040/metrics | grep "^starrocks_be_.*_mem_bytes\|^sta
 http://be_ip:8040/mem_tracker
 ```
 
-![MemTracker](!../../assets/memory_management_1.png)
+![MemTracker](!../assets/memory_management_1.png)
 
 * level: MemTracker 是一个树型结构，第一级是 BE 使用总内存，第二级是分类内存使用。
-* Label: 标识内存分类，对应指标的含义参考章节: 内存分类。
+* Label: 标识内存分类，对应指标的含义参考章节: [内存分类](#内存分类)。
 * Parent: 父结点 Label。
 * Limit: 内存使用限制，-1 表示没有限制。
 * Current Consumption: 当前内存使用。
