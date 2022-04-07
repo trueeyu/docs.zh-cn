@@ -13,8 +13,6 @@
 * `array`：需要连接的数组。支持的数据类型为 ARRAY。
 * `sep`：分隔符。支持的数据类型为 VARCHAR。
 * `null_replace_str`：替换 NULL 的字符串。支持的数据类型为 VARCHAR。
-* 只支持一维数组。
-* 不支持 Decimal 类型。
 
 ## 返回值说明
 
@@ -22,8 +20,10 @@
 
 ## 注意事项
 
-* 如果没有传 `null_replace_str` 参数，NULL 会被丢弃。
+* `array` 只支持一维数组。
+* `array` 不支持 Decimal 类型。
 * 如果参数 `sep` 为 NULL, 返回值为 NULL。
+* 如果没有传 `null_replace_str` 参数，NULL 会被丢弃。
 * 如果参数 `null_replace_str` 为 NULL, 返回值为 NULL。
 
 ## 示例
