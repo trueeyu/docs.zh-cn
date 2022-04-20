@@ -4,13 +4,10 @@
 
 + [StarRocks介绍](/introduction/StarRocks_intro.md)
 + 快速开始
-  + [StarRocks基本概念](/quick_start/Concepts.md)
-  + [StarRocks系统架构](/quick_start/Architecture.md)
+  + [StarRocks基本概念及系统架构](/quick_start/Architecture.md)
   + [StarRocks手动部署](/quick_start/Deploy.md)
-  + [数据流和控制流](/quick_start/Data_flow_and_control_flow.md)
+  + [表创建](/quick_start/Create_table.md)
   + [数据导入和查询](/quick_start/Import_and_query.md)
-  + [测试常见问题](/quick_start/Test_faq.md)
-  + [下一步](/quick_start/Next_step.md)
 + 表设计
   + [理解StarRocks表设计](/table_design/StarRocks_table_design.md)
   + [数据模型介绍](/table_design/Data_model.md)
@@ -26,6 +23,7 @@
   + [Routine Load](/loading/RoutineLoad.md)
   + [Spark Load](/loading/SparkLoad.md)
   + [Insert Into导入](/loading/InsertInto.md)
+  + [主键模型导入](/loading/PrimaryKeyLoad.md)
   + [导入过程中完成数据转换](/loading/Etl_in_loading.md)
   + [Json数据导入](/loading/Json_loading.md)
   + [Flink connector](/loading/Flink-connector-starrocks.md)
@@ -34,6 +32,7 @@
 + 数据提取
   + [数据导出](/unloading/Export.md)
   + [Spark Connector](/unloading/Spark_connector.md)
+  + [Flink Connector](/unloading/Flink_connector.md)
 + 使用StarRocks
   + [用Bitmap实现精确去重](/using_starrocks/Using_bitmap.md)
   + [用HLL实现近似去重](/using_starrocks/Using_HLL.md)
@@ -42,6 +41,7 @@
   + [外部表](/using_starrocks/External_table.md)
   + [数组](/using_starrocks/Array.md)
   + [窗口函数](/using_starrocks/Window_function.md)
+  + [JAVA UDF](/using_starrocks/JAVA_UDF.md)
   + [CBO优化器](/using_starrocks/Cost_based_optimizer.md)
   + [Lateral Join](/using_starrocks/Lateral_join.md)
   + [时区](/using_starrocks/timezone.md)
@@ -103,6 +103,7 @@
       + [CREATE MATERIALIZED VIEW](/sql-reference/sql-statements/data-definition/CREATE%20MATERIALIZED%20VIEW.md)
       + [CREATE REPOSITORY](/sql-reference/sql-statements/data-definition/CREATE%20REPOSITORY.md)
       + [CREATE RESOURCE](/sql-reference/sql-statements/data-definition/CREATE%20RESOURCE.md)
+      + [CREATE TABLE AS SELECT](/sql-reference/sql-statements/data-definition/CREATE%20TABLE%20AS%20SELECT.md)
       + [CREATE TABLE LIKE](/sql-reference/sql-statements/data-definition/CREATE%20TABLE%20LIKE.md)
       + [CREATE TABLE](/sql-reference/sql-statements/data-definition/CREATE%20TABLE.md)
       + [CREATE VIEW](/sql-reference/sql-statements/data-definition/CREATE%20VIEW.md)
@@ -132,7 +133,7 @@
       + [LOAD](/sql-reference/sql-statements/data-manipulation/LOAD.md)
       + [PAUSE ROUTINE LOAD](/sql-reference/sql-statements/data-manipulation/PAUSE%20ROUTINE%20LOAD.md)
       + [RESUME ROUTINE LOAD](/sql-reference/sql-statements/data-manipulation/RESUME%20ROUTINE%20LOAD.md)
-      + [ROUTINE LOAD](/sql-reference/sql-statements/data-manipulation/ROUTINE%20LOAD.md)
+      + [CREATE ROUTINE LOAD](/sql-reference/sql-statements/data-manipulation/ROUTINE%20LOAD.md)
       + [SELECT](/sql-reference/sql-statements/data-manipulation/SELECT.md)
       + [SHOW ALTER](/sql-reference/sql-statements/data-manipulation/SHOW%20ALTER.md)
       + [SHOW BACKUP](/sql-reference/sql-statements/data-manipulation/SHOW%20BACKUP.md)
@@ -176,6 +177,7 @@
       + 其他类型
         + [HLL](/sql-reference/sql-statements/data-types/HLL.md)
         + [BITMAP](/sql-reference/sql-statements/data-types/BITMAP.md)
+        + [JSON](/sql-reference/sql-statements/data-types/JSON.md)
     + 辅助命令
       + [DESCRIBE](/sql-reference/sql-statements/Utility/DESCRIBE.md)
   + 函数参考
@@ -256,7 +258,21 @@
       + [starts_with](/sql-reference/sql-functions/string-functions/starts_with.md)
       + [strleft](/sql-reference/sql-functions/string-functions/strleft.md)
       + [strright](/sql-reference/sql-functions/string-functions/strright.md)
+    + JSON 函数
+      + [JSON 函数和运算符](/sql-reference/sql-functions/json-functions/json-functions-and-operators.md)
+      + JSON 构造函数
+        + [json_array](/sql-reference/sql-functions/json-functions/json-creation-functions/json_array.md)
+        + [json_object](/sql-reference/sql-functions/json-functions/json-creation-functions/json_object.md)
+        + [parse_json](/sql-reference/sql-functions/json-functions/json-creation-functions/parse_json.md)
+      + JSON 查询和处理函数
+        + [箭头函数](/sql-reference/sql-functions/json-functions/json-processing-functions/arrow-function.md)
+        + [json_query](/sql-reference/sql-functions/json-functions/json-processing-functions/json_query.md)
+        + [json_exist](/sql-reference/sql-functions/json-functions/json-processing-functions/json_exist.md)
+        + [json_each](/sql-reference/sql-functions/json-functions/json-processing-functions/json_each.md)
+        + [JSON 类型转换](/sql-reference/sql-functions/json-functions/json-processing-functions/cast-from-or-to-json.md)
+      + [JSON 运算符](/sql-reference/sql-functions/json-functions/json-operators.md)
     + 聚合函数
+      + [array_agg](/sql-reference/sql-functions/array-functions/array_agg.md)
       + [approx_count_distinct](/sql-reference/sql-functions/aggregate-functions/approx_count_distinct.md)
       + [avg](/sql-reference/sql-functions/aggregate-functions/avg.md)
       + [bitmap](/sql-reference/sql-functions/aggregate-functions/bitmap.md)
@@ -270,6 +286,7 @@
       + [sum](/sql-reference/sql-functions/aggregate-functions/sum.md)
       + [variance](/sql-reference/sql-functions/aggregate-functions/variance.md)
       + [var_samp](/sql-reference/sql-functions/aggregate-functions/var_samp.md)
+      + [any_value](/sql-reference/sql-functions/aggregate-functions/any_value.md)
     + Bitmap函数
       + [bitmap_and](/sql-reference/sql-functions/bitmap-functions/bitmap_and.md)
       + [bitmap_andnot](/sql-reference/sql-functions/bitmap-functions/bitmap_andnot.md)
@@ -279,6 +296,8 @@
       + [bitmap_hash](/sql-reference/sql-functions/bitmap-functions/bitmap_hash.md)
       + [bitmap_has_any](/sql-reference/sql-functions/bitmap-functions/bitmap_has_any.md)
       + [bitmap_intersect](/sql-reference/sql-functions/bitmap-functions/bitmap_intersect.md)
+      + [bitmap_max](/sql-reference/sql-functions/bitmap-functions/bitmap_max.md)
+      + [bitmap_min](/sql-reference/sql-functions/bitmap-functions/bitmap_min.md)
       + [bitmap_or](/sql-reference/sql-functions/bitmap-functions/bitmap_or.md)
       + [bitmap_remove](/sql-reference/sql-functions/bitmap-functions/bitmap_remove.md)
       + [bitmap_to_string](/sql-reference/sql-functions/bitmap-functions/bitmap_to_string.md)
@@ -286,41 +305,54 @@
       + [bitmap_xor](/sql-reference/sql-functions/bitmap-functions/bitmap_xor.md)
       + [to_bitmap](/sql-reference/sql-functions/bitmap-functions/to_bitmap.md)
     + 数组函数
+      + [array_agg](/sql-reference/sql-functions/array-functions/array_agg.md)
       + [array_append](/sql-reference/sql-functions/array-functions/array_append.md)
       + [array_avg](/sql-reference/sql-functions/array-functions/array_avg.md)
       + [array_contains](/sql-reference/sql-functions/array-functions/array_contains.md)
       + [array_join](/sql-reference/sql-functions/array-functions/array_join.md)
+      + [array_distinct](/sql-reference/sql-functions/array-functions/array_distinct.md)
       + [array_length](/sql-reference/sql-functions/array-functions/array_length.md)
       + [array_max](/sql-reference/sql-functions/array-functions/array_max.md)
       + [array_min](/sql-reference/sql-functions/array-functions/array_min.md)
       + [array_position](/sql-reference/sql-functions/array-functions/array_position.md)
+      + [array_sort](/sql-reference/sql-functions/array-functions/array_sort.md)
       + [array_sum](/sql-reference/sql-functions/array-functions/array_sum.md)
+      + [array_remove](/sql-reference/sql-functions/array-functions/array_remove.md)
+      + [reverse](/sql-reference/sql-functions/string-functions/reverse.md)
     + [cast函数](/sql-reference/sql-functions/cast.md)
     + [hash函数](/sql-reference/sql-functions/hash-functions/murmur_hash3_32.md)
+    + 加密函数
+      + [md5](/sql-reference/sql-functions/encryption-functions/md5.md)
+      + [sha2](/sql-reference/sql-functions/encryption-functions/sha2.md)
   + [系统变量](/reference/System_variable.md)
   + [错误码](/reference/Error_code.md)
   + [系统限制](/reference/System_limit.md)
-+ 管理手册
-  + [在容器内编译](/administration/Build_in_docker.md)
-  + [集群部署](/administration/Deployment.md)
-  + [集群管理](/administration/Cluster_administration.md)
-  + [配置参数](/administration/Configuration.md)
-  + [扩容缩容](/administration/Scale_up_down.md)
-  + [备份与恢复](/administration/Backup_and_restore.md)
++ 管理指南
+  + 部署使用
+    + [容器编译](/administration/Build_in_docker.md)
+    + [集群部署](/administration/Deployment.md)
+    + [集群管理](/administration/Cluster_administration.md)
+  + 运维操作
+    + [扩容缩容](/administration/Scale_up_down.md)
+    + [备份恢复](/administration/Backup_and_restore.md)
+    + [参数配置](/administration/Configuration.md)
+    + [监控报警](/administration/Monitor_and_Alert.md)
+    + 资源管理
+      + [资源隔离](/administration/resource_group.md)
+      + [查询管理](/administration/Query_management.md)
+      + [内存管理](/administration/Memory_management.md)
+      + [负载均衡](/administration/Load_balance.md)
+      + [副本管理](/administration/Replica.md)
+      + [黑名单管理](/administration/Blacklist.md)
   + 数据恢复
     + [数据删除恢复](/administration/Data_recovery.md)
     + [元数据恢复](/administration/Metadata_recovery.md)
-  + [副本管理](/administration/Replica.md)
-  + [查询分析](/administration/Query_planning.md)
-  + [性能优化](/administration/Profiling.md)
-  + [监控报警](/administration/Monitor_and_Alert.md)
-  + [用户权限](/administration/User_privilege.md)
-  + [认证方式](/administration/Authentication.md)
-  + 资源管理
-    + [查询管理](/administration/Query_management.md)
-    + [黑名单管理](/administration/Blacklist.md)
-    + [内存管理](/administration/Memory_management.md)
-    + [负载均衡](/administration/Load_balance.md)
+  + 用户权限及认证
+    + [用户权限](/administration/User_privilege.md)
+    + [认证方式](/administration/Authentication.md)
+  + 性能调优
+    + [查询分析](/administration/Query_planning.md)
+    + [性能优化](/administration/Profiling.md)
 + 常见问题解答
   + [部署运维](/faq/Deploy_faq.md)
   + 数据迁移
@@ -341,6 +373,8 @@
   + [其他](/faq/Others.md)
 + 性能测试
   + [SSB性能测试](/benchmarking/SSB_Benchmarking.md)
+  + [TPC-H基准测试](/benchmarking/TPC-H_Benchmark.md)
 + Release Notes
   + [v1.19](/release_notes/release-1.19.md)
   + [v2.0](/release_notes/release-2.0.md)
+  + [v2.1](/release_notes/release-2.1.md)

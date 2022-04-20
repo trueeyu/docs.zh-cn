@@ -57,7 +57,7 @@ CREATE [EXTERNAL] TABLE [IF NOT EXISTS] [database.]table_name
     * FLOAT（4字节）
     支持科学计数法
 
-    * DOUBLE（12字节）
+    * DOUBLE（8字节）
     支持科学计数法
 
     * DECIMAL[(precision, scale)] (16字节)
@@ -207,9 +207,9 @@ CREATE [EXTERNAL] TABLE [IF NOT EXISTS] [database.]table_name
 
 2. partition_desc
 
-    partition描述有三种使用方式
+    partition描述有三种使用方式：
 
-    LESS THAN
+    **LESS THAN**
 
     语法：
 
@@ -226,7 +226,7 @@ CREATE [EXTERNAL] TABLE [IF NOT EXISTS] [database.]table_name
     使用指定的 key 列和指定的数值范围进行分区。
 
     1. 分区名称仅支持字母开头，字母、数字和下划线组成
-    2. 目前仅支持以下类型的列作为 Range 分区列，且只能指定一个分区列
+    2. 目前仅支持以下类型的列作为 Range 分区列，
     TINYINT, SMALLINT, INT, BIGINT, LARGEINT, DATE, DATETIME
     3. 分区为左闭右开区间，首个分区的左边界为做最小值
     4. NULL 值只会存放在包含最小值的分区中。当包含最小值的分区被删除后，NULL 值将无法导入。
@@ -237,7 +237,7 @@ CREATE [EXTERNAL] TABLE [IF NOT EXISTS] [database.]table_name
     1. 分区一般用于时间维度的数据管理
     2. 有数据回溯需求的，可以考虑首个分区为空分区，以便后续增加分区
 
-    Fixed Range
+    **Fixed Range**
 
     语法：
 
@@ -255,7 +255,7 @@ CREATE [EXTERNAL] TABLE [IF NOT EXISTS] [database.]table_name
 
     2. 其他与LESS THAN保持同步
 
-    批量创建分区
+    **批量创建分区**
 
     语法：
 
