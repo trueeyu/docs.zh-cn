@@ -419,6 +419,7 @@
       + [uuid](/sql-reference/sql-functions/utility-functions/uuid.md)
       + [uuid_numeric](/sql-reference/sql-functions/utility-functions/uuid_numeric.md)
       + [version](/sql-reference/sql-functions/utility-functions/version.md)
+      + [isnull](/sql-reference/sql-functions/utility-functions/isnull.md)
     + 聚合函数
       + [avg](/sql-reference/sql-functions/aggregate-functions/avg.md)
       + [approx_count_distinct](/sql-reference/sql-functions/aggregate-functions/approx_count_distinct.md)
